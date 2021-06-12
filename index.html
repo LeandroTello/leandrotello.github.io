@@ -32,7 +32,11 @@
 </head>
 
 <body>
-
+ 
+	var url = new URL(window.location);
+	var params = new URLSearchParams(url.search);
+	the value for number is: " + params
+	
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-5">
