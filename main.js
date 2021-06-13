@@ -2,26 +2,28 @@ window.addEventListener("load", main);
 
 function main() {
     const urlParams = getUrlParams();
-    const Permiso = Permiso(urlParams);
+    const esPermiso = isPermiso(urlParams);
 
     let error=false;
 
     if (esPermiso) {
         
-        const Diario = PermisoDiario(urlParams);
+        const esDiario = isPermisoDiario(urlParams);
             
-        const Periodo = PermisoPeriodo(urlParams);
+        const esPeriodo = isPermisoPeriodo(urlParams);
 
         let list=listAllProperties(urlParams);
 
-        implements(list, urlParams);
+        writeHtml(list, urlParams);
 
-        if (Diario) {
-           borrarPermisoPeriodo();
-        } else if(Periodo) {
-            borrarPermisoDiario();
-	}
-        detalles();
+        if (esDiario) {
+           clearPermisoPeriodoHtml();
+        } else if (esPeriodo) {
+            clearPermisoDiarioHtml();
+        } else {
+            error=true;
+        }
+        detallesHtml();
     } else {
         error=true;
     }
@@ -38,21 +40,21 @@ function main() {
     }
 }
 
-function detalles() {
+function detallesHtml() {
     document.querySelector("#detalles").classList.remove("d-none");
 }
 
-function borrarPermisoDiario() {
+function clearPermisoDiarioHtml() {
     document.querySelector("#motivo").parentElement.parentElement.parentElement.remove();
 }
 
-function borrarPermisoPeriodo() {
+function clearPermisoPeriodoHtml() {
     document.querySelector("#vehiculo").parentElement.parentElement.parentElement.remove();
     document.querySelector("#vacaciones").parentElement.parentElement.parentElement.remove();
     document.querySelector("#fin").parentElement.remove();
 }
 
-function implements(list, urlParams) {
+function writeHtml(list, urlParams) {
     for (let id of list) {
         let object = document.querySelector("#" + id);
         if (object != null) {
@@ -121,7 +123,7 @@ function getUrlParams(){
     };
 }
 
-function Permiso(urlParams){
+function isPermiso(urlParams){
     return  urlParams.nombre != null &&
     urlParams.apellido != null &&
     urlParams.dni != null &&
@@ -132,7 +134,7 @@ function Permiso(urlParams){
     urlParams.hastaCP != null;
 }
 
-function PermisoDiario(urlParams){
+function isPermisoDiario(urlParams){
     return urlParams.fin == null &&
     urlParams.vacaciones == null &&
     urlParams.dominio == null &&
@@ -140,7 +142,7 @@ function PermisoDiario(urlParams){
     urlParams.motivo != null;
 }
 
-function PermisoPeriodo(urlParams){
+function isPermisoPeriodo(urlParams){
     return urlParams.fin != null &&
     urlParams.vacaciones != null &&
     urlParams.dominio != null &&
