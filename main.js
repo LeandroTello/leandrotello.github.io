@@ -136,7 +136,6 @@ function isPermiso(urlParams){
 
 function isPermisoDiario(urlParams){
     return urlParams.fin == null &&
-    urlParams.inicio == null &&
     urlParams.vacaciones == null &&
     urlParams.dominio == null &&
     urlParams.vehiculo == null &&
