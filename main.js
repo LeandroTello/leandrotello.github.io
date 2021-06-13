@@ -26,33 +26,6 @@ function main() {
 
 }
 
-function detallesHtml() {
-    document.querySelector("#detalles").classList.remove("d-none");
-}
-
-function clearPermisoDiarioHtml() {
-    document.querySelector("#motivo").parentElement.parentElement.parentElement.remove();
-}
-
-function clearPermisoPeriodoHtml() {
-    document.querySelector("#vehiculo").parentElement.parentElement.parentElement.remove();
-    document.querySelector("#vacaciones").parentElement.parentElement.parentElement.remove();
-    document.querySelector("#fin").parentElement.remove();
-}
-
-function writeHtml(list, urlParams) {
-    for (let id of list) {
-        let object = document.querySelector("#" + id);
-        if (object != null) {
-            if (id == "vacaciones") {
-                object.textContent = urlParams[id] == "true" ? "Si" : "No";
-            } else {
-                object.textContent = urlParams[id];
-            }
-        }
-    }
-}
-
 /**
  * 
  * @param {string} name 
@@ -67,25 +40,12 @@ function getUrlParamBy(name) {
     return results == null ? null : results[1].replaceAll("%20", " ");
 }
 
-
 /**
  * 
  * @param {any} object 
  * @returns {Array<string>}
  */
-function listAllProperties(object) {
-    var objectToInspect;
-    var result = [];
 
-    for(objectToInspect = object; objectToInspect !== null;
-        objectToInspect = Object.getPrototypeOf(objectToInspect)) {
-     result = result.concat(
-         Object.getOwnPropertyNames(objectToInspect)
-     );
- }
-
-     return result;
-}
 
 
 function getUrlParams(){
@@ -132,3 +92,54 @@ function isPermisoPeriodo(urlParams){
     urlParams.vehiculo != null &&
     urlParams.motivo == null;
 }
+
+function listAllProperties(object) {
+    var objectToInspect;
+    var result = [];
+
+    for(objectToInspect = object; objectToInspect !== null;
+        objectToInspect = Object.getPrototypeOf(objectToInspect)) {
+     result = result.concat(
+         Object.getOwnPropertyNames(objectToInspect)
+     );
+ }
+
+     return result;
+}
+
+function writeHtml(list, urlParams) {
+    for (let id of list) {
+        let object = document.querySelector("#" + id);
+        if (object != null) {
+            if (id == "vacaciones") {
+                object.textContent = urlParams[id] == "true" ? "Si" : "No";
+            } else {
+                object.textContent = urlParams[id];
+            }
+        }
+    }
+}
+
+function clearPermisoDiarioHtml() {
+    document.querySelector("#motivo").parentElement.parentElement.parentElement.remove();
+}
+
+function clearPermisoPeriodoHtml() {
+    document.querySelector("#vehiculo").parentElement.parentElement.parentElement.remove();
+    document.querySelector("#vacaciones").parentElement.parentElement.parentElement.remove();
+    document.querySelector("#fin").parentElement.remove();
+}
+
+function detallesHtml() {
+    document.querySelector("#detalles").classList.remove("d-none");
+}
+
+
+
+
+
+
+
+
+
+
