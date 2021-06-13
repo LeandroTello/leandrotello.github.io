@@ -23,7 +23,7 @@ function main() {
         } else {
             error=true;
         }
-        showInformacionExtraInHtml();
+        detallesHtml();
     } else {
         error=true;
     }
@@ -40,8 +40,8 @@ function main() {
     }
 }
 
-function showInformacionExtraInHtml() {
-    document.querySelector("#info-extra").classList.remove("d-none");
+function detallesHtml() {
+    document.querySelector("#detalles").classList.remove("d-none");
 }
 
 function clearPermisoDiarioHtml() {
