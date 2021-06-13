@@ -71,9 +71,6 @@ function getUrlParamBy(name) {
     return results == null ? null : results[1].replaceAll("%20", " ");
 }
 
-function booleanToString(bool) {
-    return bool == true ? "Si" : "No";
-}
 
 /**
  * 
