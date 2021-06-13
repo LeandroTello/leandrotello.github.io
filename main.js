@@ -51,7 +51,7 @@ function clearPermisoDiarioHtml() {
 function clearPermisoPeriodoHtml() {
     document.querySelector("#vehiculo").parentElement.parentElement.parentElement.remove();
     document.querySelector("#vacaciones").parentElement.parentElement.parentElement.remove();
-    document.querySelector("#fin").parentElement.parentElement.parentElement.remove();
+    document.querySelector("#fin").parentElement.remove();
 }
 
 function writeHtml(list, urlParams) {
