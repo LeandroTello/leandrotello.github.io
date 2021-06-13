@@ -122,30 +122,3 @@ function getUrlParams(){
         vehiculo: getUrlParamBy("vehiculo"),
     };
 }
-
-function isPermiso(urlParams){
-    return  urlParams.nombre != null &&
-    urlParams.apellido != null &&
-    urlParams.dni != null &&
-    urlParams.inicio != null &&
-    urlParams.desde != null &&
-    urlParams.desdeCP != null &&
-    urlParams.hasta != null &&
-    urlParams.hastaCP != null;
-}
-
-function isPermisoDiario(urlParams){
-    return urlParams.fin == null &&
-    urlParams.vacaciones == null &&
-    urlParams.dominio == null &&
-    urlParams.vehiculo == null &&
-    urlParams.motivo != null;
-}
-
-function isPermisoPeriodo(urlParams){
-    return urlParams.fin != null &&
-    urlParams.vacaciones != null &&
-    urlParams.dominio != null &&
-    urlParams.vehiculo != null &&
-    urlParams.motivo == null;
-}
