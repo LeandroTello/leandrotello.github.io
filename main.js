@@ -4,7 +4,6 @@ function main() {
     const urlParams = getUrlParams();
     const esPermiso = isPermiso(urlParams);
 
-    let error=false;
 
     if (esPermiso) {
         
@@ -28,16 +27,7 @@ function main() {
         error=true;
     }
 
-    const errorHtml = document.querySelector("#error");
-    const success = document.querySelector("#success");
 
-    if(error){
-        errorHtml.classList.remove("d-none");
-        success.remove();
-    }else{
-        success.classList.remove("d-none");
-        errorHtml.remove();
-    }
 }
 
 function detallesHtml() {
