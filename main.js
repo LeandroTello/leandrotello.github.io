@@ -19,12 +19,8 @@ function main() {
            clearPermisoPeriodoHtml();
         } else if (esPeriodo) {
             clearPermisoDiarioHtml();
-        } else {
-            error=true;
-        }
+        } 
         detallesHtml();
-    } else {
-        error=true;
     }
 
 
